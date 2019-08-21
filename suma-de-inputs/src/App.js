@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-//import Input from './components/input/Input';
 import Button from './components/button/Button';
-import './App.css'; //JS asume que los archivos a los que no le ponemos extensión, son archivos .js
+import './App.css';
 
 class App extends Component {
   constructor () {
@@ -12,11 +11,11 @@ class App extends Component {
       result : null
     }
   }
-  //necesito los valores de cada input 
-  handleChange = (e, name) => {
-    console.log(name)
-    this.setState({ //set state si no encuentra un estado, lo crea
-      [name] : parseInt(e.target.value) //si meto entre [] busca una variable con el nombre que esté dentro
+  handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ 
+      [name] : parseInt(value) 
     })
   }
 
@@ -31,10 +30,10 @@ class App extends Component {
     console.log(this.state)
     return (
       <div>
-        <input onChange={e => this.handleChange(e, 'inputOne')}></input> {/*e solo lo pasamos si queremos obtener un valor de ese momento*/}
-        <input onChange={e => this.handleChange(e, 'inputTwo')}></input>
+        <input name='inputOne' onChange={e => this.handleChange(e, 'inputOne')}></input> {/*name es un atributo de las etiquetas html, debe ser el mismo que pusimos como key en el state*/}
+        <input name='inputTwo' onChange={e => this.handleChange(e, 'inputTwo')}></input>
         <div onClick={() => this.suma()}> 
-          <Button text={'Suma!'}></Button> {/*cuando llamamos a un componente, los eventos no los ejecuta como tal; sino que pasa eso como el nombre de una prop*/}
+          <Button text={'Suma!'}></Button>
         </div>
         <p>{this.state.result}</p>
       </div>
