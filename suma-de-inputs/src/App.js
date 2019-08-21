@@ -13,20 +13,13 @@ class App extends Component {
     }
   }
   //necesito los valores de cada input 
-  handleChangeOne = (e) => {
-    console.log( e.target.value)
-    this.setState({
-      inputOne : parseInt(e.target.value)
+  handleChange = (e, name) => {
+    console.log(name)
+    this.setState({ //set state si no encuentra un estado, lo crea
+      [name] : parseInt(e.target.value) //si meto entre [] busca una variable con el nombre que esté dentro
     })
-    console.log(this.state.inputOne)
   }
-  handleChangeTwo = (e) => {
-    console.log( e.target.value)
-    this.setState({
-      inputTwo : parseInt(e.target.value)
-    })
-    console.log(this.state.inputTwo)
-  }
+
   suma() {
     const sum = this.state.inputOne + this.state.inputTwo
     this.setState({
@@ -38,8 +31,8 @@ class App extends Component {
     console.log(this.state)
     return (
       <div>
-        <input onChange={e => this.handleChangeOne(e)}></input> {/*e solo lo pasamos si queremos obtener un valor de ese momento*/}
-        <input onChange={e => this.handleChangeTwo(e)}></input>
+        <input onChange={e => this.handleChange(e, 'inputOne')}></input> {/*e solo lo pasamos si queremos obtener un valor de ese momento*/}
+        <input onChange={e => this.handleChange(e, 'inputTwo')}></input>
         <div onClick={() => this.suma()}> 
           <Button text={'Suma!'}></Button> {/*cuando llamamos a un componente, los eventos no los ejecuta como tal; sino que pasa eso como el nombre de una prop*/}
         </div>
