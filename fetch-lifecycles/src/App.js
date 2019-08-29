@@ -4,12 +4,20 @@ import './App.css';
 class App extends Component {
   constructor() {
     super()
+    this.state={
+      name: ''
+    }
     console.log('Constructor')
   }
   componentWillMount() {
     console.log('componentWillMount')
   }
   componentDidMount() {
+    //Acá iría el FETCH a una API
+    //Veremos que el componentDidMount y render se ejecutan de nuevo, porque hacemos setState
+    this.setState({
+      name: 'Mabe'
+    })
     console.log('componentDidMount')
   }
   render() {
