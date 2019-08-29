@@ -7,22 +7,14 @@ class App extends Component {
     this.state={
       name: ''
     }
-    console.log('Constructor')
-  }
-  componentWillMount() {
-    console.log('componentWillMount')
   }
   componentDidMount() {
-    //Acá iría el FETCH a una API
-    //Veremos que el componentDidMount y render se ejecutan de nuevo, porque hacemos setState
-    this.setState({
-      name: 'Mabe'
-    })
-    console.log('componentDidMount')
+    const data = fetch('https://api.mercadolibre.com/sites/MLA/search?q=tv');
+    //El resultado es una promise(asincrónico por defecto). El metodo por defecto es GET.
+    console.log(data)
   }
   render() {
-    console.log('render')
-    return (
+     return (
       <div className="App">
         <header className="App-header">
           <p>
