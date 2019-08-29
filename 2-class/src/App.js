@@ -11,6 +11,8 @@ import favorites from './favorites.png' //importar una imagen, no pasar la ubica
 //en varios sitios, se separan en un componente.
 
 function App() {
+  let name = 'mabe';
+  let lastName = 'Núñez'
   return (
     <div className="App">
       <section className={'displayVerticalCentered'}>
@@ -49,7 +51,23 @@ function App() {
             ></CardsVertical>
         </div>
       </section>
+      <div> {/** puedo tener ternarios en el render */}
+        {name === 'mabe' ? (
+          <span>Mabe</span>
+        ) : 
+        <span>Juani</span> }
+      </div>
+
+      <div> {/** Condicionales simples */}
+        {lastName === 'Gallo' && (
+          <span>Gallo</span>
+        )}
+        {lastName === 'Núñez' && (
+          <span>Núñez</span>
+        )}
+      </div>
     </div>
+
   );
 }
 
