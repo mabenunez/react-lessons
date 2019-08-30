@@ -1,35 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
+let products = null;
 
 class App extends Component {
   constructor() {
     super()
     this.state={
-      name: ''
+      productsArray : null,
     }
   }
-  componentDidMount() {
-    const data = fetch('https://api.mercadolibre.com/sites/MLA/search?q=tv');
-    //El resultado es una promise(asincrónico por defecto). El metodo por defecto es GET.
-    console.log(data)
+
+  async componentDidMount() {
+    const data = await fetch('https://api.mercadolibre.com/sites/MLA/search?q=tv&limit=6');
+    const result = await data.json()
+    this.setState({
+      productsArray : result.results //EL RECOÑISIMO DE SU MADRE
+    })
+    console.log(this.state.productsArray)
   }
+
   render() {
-     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+    if (this.state.productsArray !== null) {
+      products = this.state.productsArray.map((prod, prodKey, newProdArr) => {
+        return (
+          <div key={prodKey} id={prodKey}>
+            <img src={prod.thumbnail} alt={prod.title}></img>
+            <p>{prod.title}</p>
+            <p>${prod.price}</p>
+            <p>{prod.installments.quantity}x ${prod.installments.amount}</p>
+            {/** falta shipping y cuotas*/}
+          </div>
+        )
+      })
+    }
+    return (
+       <section>
+         {products}
+       </section>
     );
   }
 }
