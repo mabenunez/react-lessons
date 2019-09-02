@@ -21,7 +21,17 @@ class App extends Component {
       console.log(err)
     }
   }
+  // componentDidMount() {
+  //   console.log(1)
 
+  //   fetch('https://api.mercadolibre.com/sites/MLA/search?q=tv&limit=5').then((data) => {
+  //     data.json().then((jsonData) => {
+  //       console.log(jsonData)
+  //     })
+  //   })
+
+  //   console.log(2)
+  // }
   render() {
     return (
        <section>
