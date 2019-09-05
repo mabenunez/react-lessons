@@ -9,9 +9,11 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Route path={"/carrito"} component={Carrito}></Route>
-          <Route path={"/prueba"} component={Prueba}></Route>
+          <Route path={"/carrito"} component={Carrito}/>
+          <Route path={"/prueba"} component={Prueba}/>
+          
         </Router>
+        
       </div>
     );
   }

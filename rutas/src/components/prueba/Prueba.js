@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class Prueba extends Component {
     render() {
       return (
-        <div>
-            Prueba
-        </div>
+        <React.Fragment>
+          <div>
+              <span>Prueba</span>
+          </div>
+          <Link to={'/carrito'}>IR AL CARRITO</Link>
+        </React.Fragment>
       );
     }
   }
