@@ -3,7 +3,6 @@ import {Card} from '../card/Card.component'
 import './CardList.styles.css'
 
 export const CardList = (props) => {
-    console.log(props)
     return (
         <ul className={'cardList'}>
             {props.monsters.map((monster, monsterId) => {

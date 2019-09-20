@@ -6,7 +6,8 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      monsters : []
+      monsters : [],
+      searchField : ''
     }
   }
   /* Promises
@@ -29,7 +30,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
+        <input 
+          type='search'
+          placeholder='search monsters '
+          onChange={(e) => this.setState({ searchField : e.target.value }, () => console.log(this.state.searchField))}
+        />
         <CardList monsters={this.state.monsters}>
         </CardList>
       </div>
