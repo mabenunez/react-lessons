@@ -11,12 +11,7 @@ class App extends React.Component {
       searchField : ''
     }
   }
-  /* Promises
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => this.setState({ monsters : users}))
-  }*/
+
   async componentDidMount() {
     try {
       const data = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -28,25 +23,29 @@ class App extends React.Component {
       console.log(err)
     }
   }
+  handleChange = (e) => {
+    this.setState({ searchField : e.target.value })
+  }
   render() {
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter(monster => 
       monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())  
     )
     return (
-      <div>
+      <main className={'App'}>
         {/* <input 
           type='search'
           placeholder='search monsters '
           onChange={(e) => this.setState({ searchField : e.target.value })}
         /> */}
+        <h1>Monsters Rolodex</h1>
         <SearchBox
           placeholder='search monsters '
-          handleChange={(e) => this.setState({ searchField : e.target.value })}
+          handleChange= {this.handleChange}
         />
         <CardList monsters={filteredMonsters}>
         </CardList>
-      </div>
+      </main>
     )
   }
 }
