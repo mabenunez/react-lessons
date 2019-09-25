@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import Four from './Four.component'
 
-class Componente1 extends Component {
+class Three extends Component {
   constructor(props) {
     super(props)
   }
   render() {
     return (
       <div>
-          Componente1
+          Three
+          <Four></Four>
       </div>
     )
   }
 }
 
-export default Componente1;
+export default Three;

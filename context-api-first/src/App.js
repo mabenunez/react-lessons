@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import One from './components/One.component';
 
 class App extends Component {
   constructor(props) {
@@ -7,7 +8,9 @@ class App extends Component {
   }
   render() {
     return (
-      <div></div>
+      <div>
+        <One></One>
+      </div>
     )
   }
 }
