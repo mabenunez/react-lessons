@@ -4,19 +4,35 @@ import SearchBar from './componentes/bar/SearchBar'
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
+  constructor(props){
     super(props)
-
+    this.state = {
+      startups : [
+        {name: 'Changa', description: 'rokmwoekrmcwoekrcmwoekmrcowekmrcwoekmcweokmcokewrmc'},
+        {name: 'publica.la', description: 'rokmwoekrmcwoekrcmwoekmrcowekmrcwoekmcweokmcokewrmc'},
+        {name: 'Lution Bot', description: 'rokmwoekrmcwoekrcmwoekmrcowekmrcwoekmcweokmcokewrmc'},
+        {name: 'Tan Intensa', description: 'rokmwoekrmcwoekrcmwoekmrcowekmrcwoekmcweokmcokewrmc'}
+      ],
+      searchField : ''
+    }
   }
   handleCallback(val) {
-    console.log(val)
+    this.setState({
+      searchField : val
+    })
   }
   render(){
+    const { startups, searchField } = this.state
+
+    const filteredStartups = startups.filter(company => 
+      company.name.toLowerCase().includes(searchField.toLowerCase())
+    )
+
     return (
       <div>
-        <SearchBar handleCallback={(val) => this.handleCallback(val)}></SearchBar>
+        <SearchBar handleCallback={(val) => this.handleCallback(val)}/>
         <section>
-          <CardSection></CardSection>
+          <CardSection startups={filteredStartups}/>
         </section>
       </div>
     )

@@ -10,7 +10,7 @@ class SearchBar extends Component {
   render(){
     return (
         <header>
-          <h2>STARTUP ARGENTINA</h2>
+          <h2>STARTUPS ARGENTINAS</h2>
           {/* <SearchInput handleCallback={(val) => this.props.handleCallback(val)}></SearchInput> */}
           <input placeholder={'Buscar'} onChange={(e) => this.handleChange(e)}/>
           <button>Agregar startup</button>
