@@ -8,6 +8,7 @@ class Four extends Component {
     return (
       <div>
           Four
+          <h2>{this.context}</h2>
       </div>
     )
   }
